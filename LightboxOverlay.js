@@ -234,7 +234,7 @@ export default class LightboxOverlay extends Component {
     if (this.props.navigator) {
       return (
         <View>
-          {/* {background} */}
+          {background}
           {content}
           {header}
         </View>
@@ -243,7 +243,7 @@ export default class LightboxOverlay extends Component {
 
     return (
       <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
-        {/* {background} */}
+        {background}
         {content}
         {header}
       </Modal>
