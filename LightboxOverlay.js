@@ -218,21 +218,12 @@ export default class LightboxOverlay extends Component {
 
     const content = (
       <Animated.View style={[openStyle, dragStyle]}>
-        {(
-          <TouchableOpacity onPress={() => { }}>
-            {this.props.children}
-          </TouchableOpacity>
-        )}
+        {this.props.children}
       </Animated.View>
     );
 
     const background = (
-      <Animated.View style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}>
-        {(
-          <TouchableOpacity
-            onPress={this.close}>
-          </TouchableOpacity>
-        )}
+      <Animated.View style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]} onPress={this.close}>
       </Animated.View>);
 
     const header = (
