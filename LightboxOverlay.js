@@ -102,22 +102,22 @@ export default class LightboxOverlay extends Component {
       ]),
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
-        if(Math.abs(gestureState.dy) > DRAG_DISMISS_THRESHOLD) {
-          this.setState({
-            isPanning: false,
-            target: {
-              y: gestureState.dy,
-              x: gestureState.dx,
-              opacity: 1 - Math.abs(gestureState.dy / WINDOW_HEIGHT)
-            }
-          });
+        // if(Math.abs(gestureState.dy) > DRAG_DISMISS_THRESHOLD) {
+        //   this.setState({
+        //     isPanning: false,
+        //     target: {
+        //       y: gestureState.dy,
+        //       x: gestureState.dx,
+        //       opacity: 1 - Math.abs(gestureState.dy / WINDOW_HEIGHT)
+        //     }
+        //   });
           this.close();
-        } else {
-          Animated.spring(
-            this.state.pan,
-            { toValue: 0, ...this.props.springConfig }
-          ).start(() => { this.setState({ isPanning: false }); });
-        }
+        // } else {
+        //   Animated.spring(
+        //     this.state.pan,
+        //     { toValue: 0, ...this.props.springConfig }
+        //   ).start(() => { this.setState({ isPanning: false }); });
+        // }
       },
     });
   }
