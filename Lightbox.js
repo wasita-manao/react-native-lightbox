@@ -120,7 +120,6 @@ export default class Lightbox extends Component {
 
   render() {
     // measure will not return anything useful if we dont attach a onLayout handler on android
-    console.log('this.props.navigator ', this.props.navigator);
     return (
       <View
         ref={component => this._root = component}
