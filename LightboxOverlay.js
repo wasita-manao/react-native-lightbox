@@ -217,7 +217,7 @@ export default class LightboxOverlay extends Component {
     }];
 
     const content = (
-      <Animated.View style={[openStyle, dragStyle], {backgroundColor: "pink"}} {...handlers} useNativeDriver={false}>
+      <Animated.View style={[openStyle, dragStyle], {backgroundColor: 'pink'}} {...handlers} useNativeDriver={false}>
         {this.props.children}
       </Animated.View>
     );
