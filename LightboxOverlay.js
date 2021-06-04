@@ -68,7 +68,8 @@ export default class LightboxOverlay extends Component {
   };
 
   static defaultProps = {
-    springConfig: { tension: 30, friction: 7 },
+    // springConfig: { tension: 30, friction: 7 },
+    springConfig: {overshootClamping: true },
     backgroundColor: 'black',
   };
 
