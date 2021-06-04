@@ -142,13 +142,13 @@ export default class LightboxOverlay extends Component {
       }
     });
 
-    // Animated.spring(
-    //   this.state.openVal,
-    //   { toValue: 1, ...this.props.springConfig }
-    // ).start(() => {
-    //   this.setState({ isAnimating: false });
-    //   this.props.didOpen();
-    // });
+    Animated.spring(
+      this.state.openVal,
+      { toValue: 1, ...this.props.springConfig }
+    ).start(() => {
+      this.setState({ isAnimating: false });
+      this.props.didOpen();
+    });
   }
 
   close = () => {
@@ -159,15 +159,15 @@ export default class LightboxOverlay extends Component {
     this.setState({
       isAnimating: true,
     });
-    // Animated.spring(
-    //   this.state.openVal,
-    //   { toValue: 0, ...this.props.springConfig }
-    // ).start(() => {
-    //   this.setState({
-    //     isAnimating: false,
-    //   });
-    //   this.props.onClose();
-    // });
+    Animated.spring(
+      this.state.openVal,
+      { toValue: 0, ...this.props.springConfig }
+    ).start(() => {
+      this.setState({
+        isAnimating: false,
+      });
+      this.props.onClose();
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -217,16 +217,20 @@ export default class LightboxOverlay extends Component {
     }];
 
     const content = (
-      <TouchableOpacity style={[openStyle, dragStyle]} onPress={() => { }}>
-        {this.props.children}
-      </TouchableOpacity>
+      <Animated.View>
+        <TouchableOpacity style={[openStyle, dragStyle]} onPress={() => { }}>
+          {this.props.children}
+        </TouchableOpacity>
+      </Animated.View>
     );
 
     const background = (
-      <TouchableOpacity
-        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
-        onPress={this.close}>
-      </TouchableOpacity>);
+      <Animated.View>
+        <TouchableOpacity
+          style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
+          onPress={this.close}>
+        </TouchableOpacity>
+      </Animated.View>);
 
     const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]}>{(
       renderHeader ?
