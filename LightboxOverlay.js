@@ -217,24 +217,26 @@ export default class LightboxOverlay extends Component {
     }];
 
     const content = (
-      <TouchableOpacity style={[openStyle, dragStyle]} {...handlers} onPress={() => {}} useNativeDriver={true}>
+      <TouchableOpacity style={[openStyle, dragStyle]} onPress={() => { }}>
         {this.props.children}
       </TouchableOpacity>
     );
 
     const background = (
       <TouchableOpacity
-        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]} useNativeDriver={true}
+        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
         onPress={this.close}>
       </TouchableOpacity>);
 
-    const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]} useNativeDriver={true}>{(renderHeader ?
-      renderHeader(this.close) :
-      (
-        <TouchableOpacity onPress={this.close}>
-          <Text style={styles.closeButton}>×</Text>
-        </TouchableOpacity>
-      )
+    const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]}>{(
+      renderHeader ?
+        renderHeader(this.close)
+        :
+        (
+          <TouchableOpacity onPress={this.close}>
+            <Text style={styles.closeButton}>×</Text>
+          </TouchableOpacity>
+        )
     )}</Animated.View>);
 
 
@@ -249,7 +251,7 @@ export default class LightboxOverlay extends Component {
     }
 
     return (
-      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()} useNativeDriver={true}>
+      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
         {content}
         {header}
