@@ -145,8 +145,7 @@ export default class LightboxOverlay extends Component {
 
     Animated.spring(
       this.state.openVal,
-      { toValue: 1, ...this.props.springConfig },
-      { useNativeDriver: true }
+      { toValue: 1, ...this.props.springConfig, useNativeDriver: true }
     ).start(() => {
       this.setState({ isAnimating: false });
       this.props.didOpen();
@@ -222,7 +221,7 @@ export default class LightboxOverlay extends Component {
     const content = (
       <Animated.View
         style={[openStyle, dragStyle]}
-        onPress={() => {}, { useNativeDriver: true }}>
+        onPress={() => { }, { useNativeDriver: true }}>
         {this.props.children}
       </Animated.View>
     );
@@ -230,7 +229,7 @@ export default class LightboxOverlay extends Component {
     const background = (
       <Animated.View
         style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
-        onPress={() => {this.close}, { useNativeDriver: true }}>
+        onPress={() => { this.close }, { useNativeDriver: true }}>
       </Animated.View>);
 
     const header = (
