@@ -115,7 +115,8 @@ export default class LightboxOverlay extends Component {
         } else {
           Animated.spring(
             this.state.pan,
-            { toValue: 0, ...this.props.springConfig }
+            { toValue: 0, ...this.props.springConfig },
+            { useNativeDriver: true }
           ).start(() => { this.setState({ isPanning: false }); });
         }
       },
@@ -144,7 +145,8 @@ export default class LightboxOverlay extends Component {
 
     Animated.spring(
       this.state.openVal,
-      { toValue: 1, ...this.props.springConfig }
+      { toValue: 1, ...this.props.springConfig },
+      { useNativeDriver: true }
     ).start(() => {
       this.setState({ isAnimating: false });
       this.props.didOpen();
@@ -161,7 +163,8 @@ export default class LightboxOverlay extends Component {
     });
     Animated.spring(
       this.state.openVal,
-      { toValue: 0, ...this.props.springConfig }
+      { toValue: 0, ...this.props.springConfig },
+      { useNativeDriver: true }
     ).start(() => {
       this.setState({
         isAnimating: false,
@@ -219,7 +222,7 @@ export default class LightboxOverlay extends Component {
     const content = (
       <Animated.View
         style={[openStyle, dragStyle]}
-        onPress={() => { console.log('close'); }, { useNativeDriver: true }}>
+        onPress={() => {}, { useNativeDriver: true }}>
         {this.props.children}
       </Animated.View>
     );
@@ -227,7 +230,7 @@ export default class LightboxOverlay extends Component {
     const background = (
       <Animated.View
         style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
-        onPress={() => { console.log('close'); }, { useNativeDriver: true }}>
+        onPress={() => {this.close}, { useNativeDriver: true }}>
       </Animated.View>);
 
     const header = (
@@ -251,7 +254,7 @@ export default class LightboxOverlay extends Component {
         <View>
           {background}
           {content}
-          {/* {header} */}
+          {header}
         </View>
       );
     }
@@ -260,7 +263,7 @@ export default class LightboxOverlay extends Component {
       <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
         {content}
-        {/* {header} */}
+        {header}
       </Modal>
     );
   }
