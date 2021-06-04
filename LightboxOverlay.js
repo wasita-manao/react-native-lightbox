@@ -251,7 +251,7 @@ export default class LightboxOverlay extends Component {
         <View>
           {background}
           {content}
-          {header}
+          {/* {header} */}
         </View>
       );
     }
@@ -260,7 +260,7 @@ export default class LightboxOverlay extends Component {
       <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
         {content}
-        {header}
+        {/* {header} */}
       </Modal>
     );
   }
