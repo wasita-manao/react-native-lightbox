@@ -217,15 +217,16 @@ export default class LightboxOverlay extends Component {
     }];
 
     const content = (
-      <Animated.View style={[openStyle, dragStyle], {backgroundColor: 'pink'}} {...handlers} useNativeDriver={false}>
+      <TouchableOpacity style={[openStyle, dragStyle]} {...handlers} onPress={{}}>
         {this.props.children}
-      </Animated.View>
+      </TouchableOpacity>
     );
 
     const background = (
-      <Animated.View
-        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]} useNativeDriver={false}>
-      </Animated.View>);
+      <TouchableOpacity
+        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]} useNativeDriver={false}
+        onPress={this.close}>
+      </TouchableOpacity>);
 
     const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]} useNativeDriver={false}>{(renderHeader ?
       renderHeader(this.close) :
