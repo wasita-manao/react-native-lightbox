@@ -242,25 +242,19 @@ export default class LightboxOverlay extends Component {
 
     if (this.props.navigator) {
       return (
-        <View>
-          {background}
-          {/* {content} */}
-          {/* {header} */}
-        </View>
+        // <View>
+        <TouchableOpacity style={{ backgroundColor: backgroundColor}} onPress={this.close}>
+          {/* {background} */}
+          {content}
+          {header}
+        </TouchableOpacity>
       );
     }
 
     return (
       // <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
-      //   {background}
-      //   {/* {content} */}
-      //   {/* {header} */}
-      // </Modal>
-
-      <TouchableOpacity
-        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
-        onPress={this.close}
-      >
+      <TouchableOpacity style={{ backgroundColor: backgroundColor}} onPress={this.close}>
+        {/* {background} */}
         {content}
         {header}
       </TouchableOpacity>
