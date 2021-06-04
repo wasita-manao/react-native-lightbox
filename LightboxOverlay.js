@@ -224,10 +224,11 @@ export default class LightboxOverlay extends Component {
 
     const background = (
       <TouchableOpacity
-        style={[styles.background, { backgroundColor: backgroundColor, zIndex: 9, position: 'absolute' }, lightboxOpacityStyle]}
+        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
         onPress={this.close}
       >
         {content}
+        {header}
       </TouchableOpacity>);
     const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]} useNativeDriver={true}>{(renderHeader ?
       renderHeader(this.close) :
@@ -243,7 +244,8 @@ export default class LightboxOverlay extends Component {
       return (
         <View>
           {background}
-          {header}
+          {/* {content} */}
+          {/* {header} */}
         </View>
       );
     }
@@ -251,8 +253,8 @@ export default class LightboxOverlay extends Component {
     return (
       <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
-
-        {header}
+        {/* {content} */}
+        {/* {header} */}
       </Modal>
     );
   }
