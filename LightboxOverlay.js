@@ -227,8 +227,6 @@ export default class LightboxOverlay extends Component {
         style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
         onPress={this.close}
       >
-        {content}
-        {header}
       </TouchableOpacity>);
     const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]} useNativeDriver={true}>{(renderHeader ?
       renderHeader(this.close) :
@@ -242,22 +240,20 @@ export default class LightboxOverlay extends Component {
 
     if (this.props.navigator) {
       return (
-        // <View>
-        <TouchableOpacity style={{ backgroundColor: backgroundColor}} onPress={this.close}>
-          {/* {background} */}
+        <View>
+          {background}
           {content}
           {header}
-        </TouchableOpacity>
+        </View>
       );
     }
 
     return (
-      // <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
-      <TouchableOpacity style={{ backgroundColor: backgroundColor}} onPress={this.close}>
-        {/* {background} */}
+      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
+        {background}
         {content}
         {header}
-      </TouchableOpacity>
+      </Modal>
     );
   }
 }
