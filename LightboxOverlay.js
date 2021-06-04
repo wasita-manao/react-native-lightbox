@@ -115,8 +115,7 @@ export default class LightboxOverlay extends Component {
         } else {
           Animated.spring(
             this.state.pan,
-            { toValue: 0, ...this.props.springConfig },
-            { useNativeDriver: true }
+            { toValue: 0, ...this.props.springConfig }
           ).start(() => { this.setState({ isPanning: false }); });
         }
       },
@@ -145,8 +144,7 @@ export default class LightboxOverlay extends Component {
 
     Animated.spring(
       this.state.openVal,
-      { toValue: 1, ...this.props.springConfig },
-      { useNativeDriver: true }
+      { toValue: 1, ...this.props.springConfig }
     ).start(() => {
       this.setState({ isAnimating: false });
       this.props.didOpen();
@@ -163,8 +161,7 @@ export default class LightboxOverlay extends Component {
     });
     Animated.spring(
       this.state.openVal,
-      { toValue: 0, ...this.props.springConfig },
-      { useNativeDriver: true }
+      { toValue: 0, ...this.props.springConfig }
     ).start(() => {
       this.setState({
         isAnimating: false,
