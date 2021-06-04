@@ -219,7 +219,7 @@ export default class LightboxOverlay extends Component {
     const content = (
       <Animated.View
         style={[openStyle, dragStyle]}
-        onPress={() => { this.close }, { useNativeDriver: true }}>
+        onPress={() => { console.log('close'); }, { useNativeDriver: true }}>
         {this.props.children}
       </Animated.View>
     );
@@ -227,7 +227,7 @@ export default class LightboxOverlay extends Component {
     const background = (
       <Animated.View
         style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
-        onPress={() => { this.close }, { useNativeDriver: true }}>
+        onPress={() => { console.log('close'); }, { useNativeDriver: true }}>
       </Animated.View>);
 
     const header = (
