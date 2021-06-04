@@ -217,7 +217,7 @@ export default class LightboxOverlay extends Component {
     }];
 
     const content = (
-      <TouchableOpacity style={[openStyle, dragStyle]} {...handlers} onPress={{}}>
+      <TouchableOpacity style={[openStyle, dragStyle]} {...handlers} onPress={() => {}}>
         {this.props.children}
       </TouchableOpacity>
     );
