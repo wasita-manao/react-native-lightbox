@@ -251,11 +251,19 @@ export default class LightboxOverlay extends Component {
     }
 
     return (
-      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
-        {background}
-        {/* {content} */}
-        {/* {header} */}
-      </Modal>
+      // <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
+      //   {background}
+      //   {/* {content} */}
+      //   {/* {header} */}
+      // </Modal>
+
+      <TouchableOpacity
+        style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
+        onPress={this.close}
+      >
+        {content}
+        {header}
+      </TouchableOpacity>
     );
   }
 }
