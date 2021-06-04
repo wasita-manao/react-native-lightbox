@@ -221,6 +221,7 @@ export default class LightboxOverlay extends Component {
         style={[openStyle, dragStyle]}
         onPress={
           Animated.event(
+            [{nativeEvent: {contentOffset: {x: this._scrollX}}}],
             { listener: (event) => console.log('event ', event) },
             { useNativeDriver: true }
           )}
@@ -234,6 +235,7 @@ export default class LightboxOverlay extends Component {
         style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}
         onPress={
           Animated.event(
+            [{nativeEvent: {contentOffset: {x: this._scrollX}}}],
             { listener: (event) => console.log('event ', event) },
             { useNativeDriver: true }
           )}
