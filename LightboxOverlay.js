@@ -236,7 +236,7 @@ export default class LightboxOverlay extends Component {
 
     if (this.props.navigator) {
       return (
-        <View style={{justifyContent: 'center', alignContent: 'center'}}>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
           {background}
           {content}
           {header}
@@ -245,7 +245,7 @@ export default class LightboxOverlay extends Component {
     }
 
     return (
-      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()} style={{justifyContent: 'center', alignContent: 'center'}}>
+      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()} style={{justifyContent: 'center', alignItems: 'center'}}>
         {background}
         {content}
         {header}
