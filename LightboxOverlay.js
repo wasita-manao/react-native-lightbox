@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   open: {
     position: 'absolute',
-    // flex: 1,
+    flex: 1,
     justifyContent: 'center',
     // Android pan handlers crash without this declaration:
     backgroundColor: 'red',
@@ -215,7 +215,7 @@ export default class LightboxOverlay extends Component {
       left: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.x, target.x] }),
       top: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET] }),
       width: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH] }),
-      height: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT] }),
+      minHeight: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, 50] }),
     }
     ];
 
@@ -229,7 +229,7 @@ export default class LightboxOverlay extends Component {
       )
     )}</Animated.View>);
     const content = (
-      <Animated.View style={[styles.open, dragStyle], {width: WINDOW_WIDTH, height: WINDOW_HEIGHT, backgroundColor: 'red'}}>
+      <Animated.View style={[openStyle, dragStyle]}>
         {this.props.children}
       </Animated.View>
     );
