@@ -20,9 +20,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     // flex: 1,
     justifyContent: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
     // Android pan handlers crash without this declaration:
     backgroundColor: 'red',
   },
@@ -52,27 +49,27 @@ const styles = StyleSheet.create({
 export default class LightboxOverlay extends Component {
   static propTypes = {
     origin: PropTypes.shape({
-      x:        PropTypes.number,
-      y:        PropTypes.number,
-      width:    PropTypes.number,
-      height:   PropTypes.number,
+      x: PropTypes.number,
+      y: PropTypes.number,
+      width: PropTypes.number,
+      height: PropTypes.number,
     }),
     springConfig: PropTypes.shape({
-      tension:  PropTypes.number,
+      tension: PropTypes.number,
       friction: PropTypes.number,
     }),
     backgroundColor: PropTypes.string,
-    isOpen:          PropTypes.bool,
-    renderHeader:    PropTypes.func,
-    onOpen:          PropTypes.func,
-    onClose:         PropTypes.func,
-    willClose:         PropTypes.func,
-    swipeToDismiss:  PropTypes.bool,
+    isOpen: PropTypes.bool,
+    renderHeader: PropTypes.func,
+    onOpen: PropTypes.func,
+    onClose: PropTypes.func,
+    willClose: PropTypes.func,
+    swipeToDismiss: PropTypes.bool,
   };
 
   static defaultProps = {
     // springConfig: { tension: 30, friction: 7 },
-    springConfig: {overshootClamping: true },
+    springConfig: { overshootClamping: true },
     backgroundColor: 'black',
   };
 
@@ -115,7 +112,7 @@ export default class LightboxOverlay extends Component {
         //       opacity: 1 - Math.abs(gestureState.dy / WINDOW_HEIGHT)
         //     }
         //   });
-          this.close();
+        this.close();
         // } else {
         //   Animated.spring(
         //     this.state.pan,
@@ -127,13 +124,13 @@ export default class LightboxOverlay extends Component {
   }
 
   componentDidMount() {
-    if(this.props.isOpen) {
+    if (this.props.isOpen) {
       this.open();
     }
   }
 
   open = () => {
-    if(isIOS) {
+    if (isIOS) {
       StatusBar.setHidden(true, 'fade');
     }
     this.state.pan.setValue(0);
@@ -157,7 +154,7 @@ export default class LightboxOverlay extends Component {
 
   close = () => {
     this.props.willClose();
-    if(isIOS) {
+    if (isIOS) {
       StatusBar.setHidden(false, 'fade');
     }
     this.setState({
@@ -175,7 +172,7 @@ export default class LightboxOverlay extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.isOpen !== prevProps.isOpen && this.props.isOpen) {
+    if (this.props.isOpen !== prevProps.isOpen && this.props.isOpen) {
       this.open();
     }
   }
@@ -197,30 +194,33 @@ export default class LightboxOverlay extends Component {
     } = this.state;
 
     const lightboxOpacityStyle = {
-      opacity: openVal.interpolate({inputRange: [0, 1], outputRange: [0, target.opacity]})
+      opacity: openVal.interpolate({ inputRange: [0, 1], outputRange: [0, target.opacity] })
     };
 
     let handlers;
-    if(swipeToDismiss) {
+    if (swipeToDismiss) {
       handlers = this._panResponder.panHandlers;
     }
 
     let dragStyle;
-    if(isPanning) {
+    if (isPanning) {
       dragStyle = {
         top: this.state.pan,
       };
-      lightboxOpacityStyle.opacity = this.state.pan.interpolate({inputRange: [-WINDOW_HEIGHT, 0, WINDOW_HEIGHT], outputRange: [0, 1, 0]});
+      lightboxOpacityStyle.opacity = this.state.pan.interpolate({ inputRange: [-WINDOW_HEIGHT, 0, WINDOW_HEIGHT], outputRange: [0, 1, 0] });
     }
 
-    const openStyle = [styles.open, 
-      {
-      left:   openVal.interpolate({inputRange: [0, 1], outputRange: [origin.x, target.x]}),
-      top:    openVal.interpolate({inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET]}),
-      width:  openVal.interpolate({inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH]}),
-      height: openVal.interpolate({inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT-160]}),
+    const openStyle = [styles.open,
+    {
+      left: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.x, target.x] }),
+      top: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET] }),
+      width: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH] }),
+      height: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT - 160] }),
+      alignContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center',
     }
-  ];
+    ];
 
     const background = (<Animated.View style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]} {...handlers}></Animated.View>);
     const header = (<Animated.View style={[styles.header, lightboxOpacityStyle]}>{(renderHeader ?
