@@ -216,7 +216,6 @@ export default class LightboxOverlay extends Component {
       top: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET] }),
       width: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH] }),
       height: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT - 160] }),
-      marginTop: 120
     }
     ];
 
@@ -239,7 +238,9 @@ export default class LightboxOverlay extends Component {
       return (
         <View>
           {background}
-          {content}
+          <View style={{flex: 1, alignContent: 'center'}}>
+            {content}
+          </View>
           {header}
         </View>
       );
@@ -248,7 +249,9 @@ export default class LightboxOverlay extends Component {
     return (
       <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
-        {content}
+        <View style={{flex: 1, alignContent: 'center'}}>
+            {content}
+          </View>
         {header}
       </Modal>
     );
