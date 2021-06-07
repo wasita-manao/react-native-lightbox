@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // Android pan handlers crash without this declaration:
     backgroundColor: 'red',
+    width: WINDOW_WIDTH,
+    height: WINDOW_HEIGHT/2
   },
   header: {
     position: 'absolute',
@@ -211,12 +213,12 @@ export default class LightboxOverlay extends Component {
     }
 
     const openStyle = [styles.open, 
-      {
-      left:   openVal.interpolate({inputRange: [0, 1], outputRange: [origin.x, target.x]}),
-      top:    openVal.interpolate({inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET]}),
-      width:  openVal.interpolate({inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH]}),
-      height: openVal.interpolate({inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT/0.5]}),
-    }
+    //   {
+    //   left:   openVal.interpolate({inputRange: [0, 1], outputRange: [origin.x, target.x]}),
+    //   top:    openVal.interpolate({inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET]}),
+    //   width:  openVal.interpolate({inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH]}),
+    //   height: openVal.interpolate({inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT/0.5]}),
+    // }
   ];
 
     const background = (<Animated.View style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]} {...handlers}></Animated.View>);
