@@ -229,14 +229,14 @@ export default class LightboxOverlay extends Component {
       )
     )}</Animated.View>);
     const content = (
-      <Animated.View style={[openStyle, dragStyle]}>
+      <Animated.View style={[openStyle, dragStyle], {alignItems: 'center'}}>
         {this.props.children}
       </Animated.View>
     );
 
     if (this.props.navigator) {
       return (
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View>
           {background}
           {content}
           {header}
@@ -245,7 +245,7 @@ export default class LightboxOverlay extends Component {
     }
 
     return (
-      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()} style={{justifyContent: 'center', alignItems: 'center'}}>
+      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
         {content}
         {header}
