@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   open: {
     position: 'absolute',
-    // flex: 1,
+    flex: 1,
     justifyContent: 'center',
     // Android pan handlers crash without this declaration:
     backgroundColor: 'red',
@@ -238,9 +238,7 @@ export default class LightboxOverlay extends Component {
       return (
         <View>
           {background}
-          <View style={{flex: 1, alignContent: 'center'}}>
-            {content}
-          </View>
+          {content}
           {header}
         </View>
       );
@@ -249,9 +247,7 @@ export default class LightboxOverlay extends Component {
     return (
       <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
         {background}
-        <View style={{flex: 1, alignContent: 'center'}}>
-            {content}
-          </View>
+        {content}
         {header}
       </Modal>
     );
