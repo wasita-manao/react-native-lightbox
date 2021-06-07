@@ -227,7 +227,7 @@ export default class LightboxOverlay extends Component {
       )
     )}</Animated.View>);
     const content = (
-      <Animated.View style={[openStyle, dragStyle], {backgroundColor: 'red'}}>
+      <Animated.View style={[openStyle, dragStyle]}>
         {this.props.children}
       </Animated.View>
     );
