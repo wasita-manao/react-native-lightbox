@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   open: {
     position: 'absolute',
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     // Android pan handlers crash without this declaration:
     backgroundColor: 'red',
@@ -229,7 +229,7 @@ export default class LightboxOverlay extends Component {
       )
     )}</Animated.View>);
     const content = (
-      <Animated.View style={[styles.open, dragStyle], {width: WINDOW_WIDTH, height: WINDOW_HEIGHT}}>
+      <Animated.View style={[styles.open, dragStyle], {width: WINDOW_WIDTH, height: WINDOW_HEIGHT, backgroundColor: 'red'}}>
         {this.props.children}
       </Animated.View>
     );
