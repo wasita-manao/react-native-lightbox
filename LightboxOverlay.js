@@ -216,7 +216,6 @@ export default class LightboxOverlay extends Component {
       top: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET] }),
       width: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH] }),
       height: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT - 160] }),
-      alignContent: 'center'
     }
     ];
 
@@ -237,7 +236,7 @@ export default class LightboxOverlay extends Component {
 
     if (this.props.navigator) {
       return (
-        <View>
+        <View style={{justifyContent: 'center', alignContent: 'center'}}>
           {background}
           {content}
           {header}
@@ -246,7 +245,7 @@ export default class LightboxOverlay extends Component {
     }
 
     return (
-      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()}>
+      <Modal visible={isOpen} transparent={true} onRequestClose={() => this.close()} style={{justifyContent: 'center', alignContent: 'center'}}>
         {background}
         {content}
         {header}
