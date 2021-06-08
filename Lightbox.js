@@ -82,7 +82,7 @@ export default class Lightbox extends Component {
         },
       }, () => {
         this.props.didOpen();
-        if(this.props.navigator) {
+        if(!this.props.navigator) {
           const route = {
             component: LightboxOverlay,
             passProps: this.getOverlayProps(),
@@ -111,7 +111,7 @@ export default class Lightbox extends Component {
     this.setState({
       isOpen: false,
     }, this.props.onClose);
-    if(this.props.navigator) {
+    if(!this.props.navigator) {
       const routes = this.props.navigator.getCurrentRoutes();
       routes.pop();
       this.props.navigator.immediatelyResetRouteStack(routes);
