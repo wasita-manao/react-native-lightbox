@@ -215,7 +215,8 @@ export default class LightboxOverlay extends Component {
       left: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.x, target.x] }),
       top: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET] }),
       width: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH] }),
-      minHeight: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, 550] }),
+      minHeight: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, WINDOW_HEIGHT] }),
+      marginVertical: 100 
     }
     ];
 
@@ -229,7 +230,7 @@ export default class LightboxOverlay extends Component {
       )
     )}</Animated.View>);
     const content = (
-      <Animated.View style={[openStyle, dragStyle, {backgroundColor: 'red', alignSelf: 'center' }]}>
+      <Animated.View style={[openStyle, dragStyle, { backgroundColor: 'red', alignItems: 'center' }]}>
         {this.props.children}
       </Animated.View>
     );
