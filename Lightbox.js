@@ -72,7 +72,7 @@ export default class Lightbox extends Component {
       this.props.onOpen();
 
       this.setState({
-        isOpen: (this.props.navigator ? true : false),
+        isOpen: (this.props.navigator = false),
         isAnimating: true,
         origin: {
           width,
@@ -135,7 +135,7 @@ export default class Lightbox extends Component {
             {this.props.children}
           </TouchableHighlight>
         </Animated.View>
-        {this.props.navigator ? false : <LightboxOverlay {...this.getOverlayProps()} />}
+        {/* {this.props.navigator ? false : <LightboxOverlay {...this.getOverlayProps()} />} */}
       </View>
     );
   }
