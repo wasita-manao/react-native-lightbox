@@ -135,7 +135,7 @@ export default class Lightbox extends Component {
             {this.props.children}
           </TouchableHighlight>
         </Animated.View>
-        {this.props.navigator ? false : <LightboxOverlay {...this.getOverlayProps()} />}
+        {/* {this.props.navigator ? false : <LightboxOverlay {...this.getOverlayProps()} />} */}
       </View>
     );
   }
