@@ -215,8 +215,8 @@ export default class LightboxOverlay extends Component {
       left: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.x, target.x] }),
       top: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.y + STATUS_BAR_OFFSET, target.y + STATUS_BAR_OFFSET] }),
       width: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.width, WINDOW_WIDTH] }),
-      height: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, origin.height > 350 ? WINDOW_HEIGHT - 260 : WINDOW_HEIGHT - 420 ] }),
-      marginTop: 130
+      height: openVal.interpolate({ inputRange: [0, 1], outputRange: [origin.height, origin.height > 150 ? WINDOW_HEIGHT - 260 : WINDOW_HEIGHT - 420 ] }),
+      marginTop: 150
     }
     ];
 
